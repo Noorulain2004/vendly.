@@ -1,0 +1,189 @@
+/* src/Components/Working/HeroWork/Hero-works.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --theme-orange: #FF9500;
+  --bg-dark-blue: #0B1120; /* Vendly Main Dark Theme */
+  --text-white: #ffffff;
+  --text-dim: #94A3B8;
+  --glow-color: rgba(255, 149, 0, 0.4); /* Orange Glow */
+}
+
+.hero-work-section {
+  position: relative;
+  background-color: var(--bg-dark-blue);
+  min-height: 80vh; /* Thora chota rakha ha kion k buttons nahi hain */
+  display: flex;
+  align-items: center;
+  padding: 80px 24px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Background Effect */
+.hero-work-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Subtle Orange Glow Radial */
+  background: radial-gradient(circle at 80% 20%, rgba(255, 149, 0, 0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-work-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Left Column: Text Content --- */
+.hero-work-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.work-badge {
+  display: inline-block;
+  color: var(--theme-orange);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 149, 0, 0.3);
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: rgba(255, 149, 0, 0.05);
+}
+
+.hero-work-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-white);
+  margin-bottom: 24px;
+}
+
+.hero-work-title .highlight-text {
+  color: var(--theme-orange);
+  /* Text Glow */
+  text-shadow: 0 0 40px rgba(255, 149, 0, 0.3);
+}
+
+.hero-work-description {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+/* Stats (Buttons Removed) */
+.hero-work-stats {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 30px;
+}
+
+.work-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-white);
+}
+
+.work-stat-label {
+  font-size: 0.9rem;
+  color: var(--theme-orange);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* --- Right Column: Image Visual --- */
+.hero-work-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.work-image-glow {
+  position: relative;
+  z-index: 2;
+}
+
+/* Orange Glow Behind Image */
+.work-image-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  background: var(--theme-orange);
+  filter: blur(80px);
+  opacity: 0.25;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.main-work-image {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Modern floating animation */
+  animation: floatHero 6s ease-in-out infinite;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes floatHero {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 968px) {
+  .hero-work-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-work-content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-work-stats {
+    justify-content: center;
+  }
+
+  .hero-work-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-work-visual {
+    margin-top: 50px;
+    width: 100%;
+  }
+}

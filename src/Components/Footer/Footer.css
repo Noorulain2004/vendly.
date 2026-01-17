@@ -1,0 +1,185 @@
+/* src/Components/Footer/Footer.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --theme-orange: #FF9500;
+  --bg-white: #ffffff;
+  --text-dark: #111827;
+  --text-grey: #4b5563;
+  --border-light: #e5e7eb;
+  --social-bg: #f3f4f6;
+}
+
+/* --- NEW KEYFRAME ANIMATIONS --- */
+/* 1. Entrance: Nechy sy oper any k liye */
+@keyframes fadeInUpSm {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2. Logo Dot Pulse: Halka sa barha chota hony k liye */
+@keyframes orangePulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+/* ------------------------------- */
+
+
+.footer-section {
+  width: 100%;
+  background-color: var(--bg-white);
+  padding: 80px 20px 30px 20px;
+  font-family: 'Inter', sans-serif;
+  border-top: 1px solid var(--border-light);
+  overflow: hidden; /* Animations ko bahir jany sy rokny k liye */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Top Area --- */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-bottom: 60px;
+}
+
+/* --- APPLYING ENTRANCE ANIMATIONS TO COLUMNS --- */
+/* Brand Column */
+.footer-brand {
+  max-width: 350px;
+  opacity: 0; /* Shuru main gayab */
+  animation: fadeInUpSm 0.8s ease-out forwards; /* Animation apply */
+}
+
+/* Other Columns (Links & Social) */
+.footer-col {
+  opacity: 0;
+  animation: fadeInUpSm 0.8s ease-out forwards;
+}
+
+/* Stagger Delay: Ta k aik k baad dosra aye */
+.footer-brand       { animation-delay: 0.1s; }
+.footer-col:nth-of-type(2) { animation-delay: 0.3s; } /* Company Links */
+.footer-col:nth-of-type(3) { animation-delay: 0.5s; } /* Legal Links */
+.footer-col:nth-of-type(4) { animation-delay: 0.7s; } /* Social Links */
+/* ---------------------------------------------- */
+
+
+/* Logo Styles */
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+/* --- ORANGE DOT PULSE ANIMATION --- */
+.footer-logo span {
+  color: var(--theme-orange);
+  display: inline-block; /* Transform k liye zaroori ha */
+  /* Humesha chalty rehny wali slow animation */
+  animation: orangePulse 3s infinite ease-in-out; 
+}
+/* ---------------------------------- */
+
+.footer-desc {
+  font-size: 1rem;
+  color: var(--text-grey);
+  line-height: 1.6;
+}
+
+/* Link Columns */
+.footer-col h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 14px;
+}
+
+/* --- NEW LINK HOVER ANIMATION --- */
+.footer-links a {
+  text-decoration: none;
+  color: var(--text-grey);
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-block; /* Required for transform */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.footer-links a:hover {
+  color: var(--theme-orange); /* Orange Color */
+  transform: translateX(8px); /* Thora sa dayen (right) taraf sarakna */
+}
+/* -------------------------------- */
+
+
+/* Social Icons (Existing Animation is good) */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  width: 45px;
+  height: 45px;
+  background-color: var(--social-bg);
+  color: var(--text-dark);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.social-link:hover {
+  background-color: var(--theme-orange);
+  color: white;
+  transform: translateY(-3px) rotate(10deg); /* Thora sa oper aur rotate */
+  box-shadow: 0 5px 15px rgba(255, 149, 0, 0.3);
+}
+
+/* Bottom Area */
+.footer-bottom {
+  border-top: 1px solid var(--border-light);
+  padding-top: 30px;
+  text-align: center;
+  /* Bottom area bhi animate ho kr aye */
+  opacity: 0;
+  animation: fadeInUpSm 0.8s ease-out forwards 1s; /* 1 second delay */
+}
+
+.copyright-text {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 40px;
+  }
+}

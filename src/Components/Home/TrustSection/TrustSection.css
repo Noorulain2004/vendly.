@@ -1,0 +1,138 @@
+/* src/Components/TrustSection/TrustSection.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --theme-orange: #FF9500;
+  --bg-dark-blue: #0B1120;
+  --card-bg: #151F32;
+  --text-white: #ffffff;
+  --text-grey-blue: #94A3B8;
+}
+
+.trust-section {
+  width: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: var(--bg-dark-blue);
+  padding: 80px 20px 120px 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.trust-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.trust-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.trust-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-white);
+  margin-bottom: 20px;
+}
+
+/* Grid */
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 100%;
+}
+
+/* Card Styling */
+.trust-card {
+  background-color: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px 30px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  /* Icon center main, lekin text left par acha lagy ga list main */
+  align-items: center; 
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.trust-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 149, 0, 0.3);
+}
+
+/* Icon Box */
+.trust-icon-box {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255, 149, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  color: var(--theme-orange);
+  border: 1px solid rgba(255, 149, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.trust-card:hover .trust-icon-box {
+  background: var(--theme-orange);
+  color: #ffffff;
+  box-shadow: 0 10px 30px -5px rgba(255, 149, 0, 0.4);
+}
+
+.trust-icon-svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Card Title */
+.trust-card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* --- NEW BULLET LIST STYLING --- */
+.trust-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  text-align: left; /* List humesha left align honi chahiye */
+}
+
+.trust-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  color: var(--text-grey-blue);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Custom Orange Checkmark/Dot styling */
+.trust-list li::before {
+  content: '✓'; /* Checkmark symbol */
+  color: var(--theme-orange);
+  font-weight: 800;
+  margin-right: 12px;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+  .trust-title {
+    font-size: 2.2rem;
+  }
+}

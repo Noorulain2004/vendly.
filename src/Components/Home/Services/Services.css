@@ -1,0 +1,185 @@
+/* src/Components/Services/Services.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --theme-orange: #FF9500;
+  --theme-orange-dark: #e08200;
+  --text-dark: #111827;
+  --text-grey: #6b7280;
+}
+
+.services-section {
+  width: auto; /* Ya isy auto kr den */
+  max-width: 100%; /* Ta k screen sy bahir na jaye */
+  box-sizing: border-box;
+  padding: 100px 20px;
+  background-color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 120px; /* Good spacing between sections */
+}
+
+/* --- The Service Row --- */
+.service-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  
+  /* Initial State for Animation */
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease-out forwards;
+}
+
+/* Stagger animations for each row */
+.service-row:nth-child(1) { animation-delay: 0.1s; }
+.service-row:nth-child(2) { animation-delay: 0.3s; }
+.service-row:nth-child(3) { animation-delay: 0.5s; }
+.service-row:nth-child(4) { animation-delay: 0.7s; }
+
+/* Alternating Layout */
+.service-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* --- Text Content --- */
+.service-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.service-label {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--theme-orange); /* Orange Label */
+  margin-bottom: 16px;
+  background: rgba(255, 149, 0, 0.1); /* Light Orange Background */
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.service-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+.service-desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-grey);
+  margin-bottom: 35px;
+}
+
+/* --- Orange Link with Animation --- */
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--theme-orange); /* Main Theme Color */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.service-link:hover {
+  color: var(--theme-orange-dark);
+  border-bottom: 2px solid var(--theme-orange-dark);
+  transform: translateX(5px); /* Slide text slightly */
+}
+
+.arrow-icon {
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.service-link:hover .arrow-icon {
+  transform: translateX(6px); /* Arrow shoots forward */
+}
+
+/* --- Image Side with Floating Animation --- */
+.service-image-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.service-img {
+  width: 100%;
+  max-width: 580px;
+  height: auto;
+  object-fit: contain;
+  
+  /* --- NEW: ROUNDED CORNERS ADDED HERE --- */
+  border-radius: 24px; /* Is value ko kam ya zyada kr k golai adjust kr skty hain */
+  /* --------------------------------------- */
+  
+  /* The Floating Animation */
+  animation: float 6s ease-in-out infinite;
+  
+  /* Soft Glow behind image (Theme Orange) */
+  filter: drop-shadow(0 20px 40px rgba(255, 149, 0, 0.15));
+}
+
+/* --- Keyframe Animations --- */
+
+/* 1. Floating (Bobbing up and down) */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* 2. Fade In + Slide Up (Entry Animation) */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 900px) {
+  .service-row, 
+  .service-row.reverse {
+    flex-direction: column-reverse !important;
+    text-align: center;
+    gap: 50px;
+  }
+
+  .service-content {
+    max-width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .service-title {
+    font-size: 2.2rem;
+  }
+
+  .service-img {
+    max-width: 100%;
+    animation: none; /* Disable float on mobile to save battery/performance */
+  }
+}

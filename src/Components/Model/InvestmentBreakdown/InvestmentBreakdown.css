@@ -1,0 +1,232 @@
+/* src/Components/Model/InvestmentBreakdown/InvestmentBreakdown.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --chart-green: #10b981; /* Green */
+  --chart-orange: #f59e0b; /* Orange */
+  --chart-dark: #111827;   /* Dark Blue */
+  
+  --bg-white: #ffffff;
+  --text-dark: #1f2937;
+  --text-grey: #6b7280;
+}
+
+.investment-section {
+  width: 100%;
+  background-color: var(--bg-white);
+  padding: 100px 20px;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+.investment-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* --- Header --- */
+.inv-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.inv-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+
+.inv-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-grey);
+}
+
+/* --- Content Grid --- */
+.inv-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px; 
+}
+
+/* --- Left: The Pie Chart --- */
+.chart-wrapper {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  
+  /* Initial State for Animation */
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.chart-wrapper.animate-chart {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* The Chart Itself */
+.pie-chart {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* Conic Gradient Logic:
+     Green: 0% to 40% (144 degrees)
+     Orange: 40% to 80% (another 144 degrees)
+     Dark: 80% to 100% (72 degrees) 
+  */
+  background: conic-gradient(
+    var(--chart-green) 0deg 144deg,   
+    var(--chart-orange) 144deg 288deg, 
+    var(--chart-dark) 288deg 360deg   
+  );
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  border: 8px solid #ffffff; /* White border for clean look */
+}
+
+/* Labels on Chart */
+.chart-label-overlay {
+  position: absolute;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  pointer-events: none;
+}
+
+/* Precise Positioning based on slice center */
+/* Green Slice Center (~72deg): Top Right area */
+.lbl-ads { 
+  top: 25%; 
+  right: 20%; 
+}
+
+/* Orange Slice Center (~216deg): Bottom area */
+.lbl-inv { 
+  bottom: 25%; 
+  left: 25%; 
+}
+
+/* Dark Slice Center (~324deg): Top Left area */
+.lbl-tools { 
+  top: 30%; 
+  left: 18%; 
+  font-size: 1rem; /* Thora chota kyun k slice choti ha */
+}
+
+/* --- Right: Breakdown List --- */
+.breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  max-width: 550px;
+}
+
+.breakdown-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s ease;
+  padding: 20px;
+  border-radius: 16px;
+  background: #f9fafb; /* Light bg for cards */
+  border: 1px solid #f3f4f6;
+}
+
+.breakdown-item.show-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.breakdown-item:hover {
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transform: translateY(-5px);
+}
+
+/* Icon Dots */
+.bd-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bd-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+/* Dot Colors */
+.icon-green { background: rgba(16, 185, 129, 0.15); }
+.dot-green { background: var(--chart-green); }
+
+.icon-orange { background: rgba(245, 158, 11, 0.15); }
+.dot-orange { background: var(--chart-orange); }
+
+.icon-dark { background: rgba(17, 24, 39, 0.15); }
+.dot-dark { background: var(--chart-dark); }
+
+/* Text Content */
+.bd-content {
+  flex: 1;
+}
+
+.bd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.bd-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.bd-percent {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.pc-green { color: var(--chart-green); }
+.pc-orange { color: var(--chart-orange); }
+.pc-dark { color: var(--chart-dark); }
+
+.bd-desc {
+  font-size: 1rem;
+  color: var(--text-grey);
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .inv-grid {
+    flex-direction: column;
+    gap: 60px;
+  }
+  
+  .chart-wrapper {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .chart-label-overlay {
+    font-size: 1rem;
+  }
+}

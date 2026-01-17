@@ -1,0 +1,185 @@
+/* src/Components/GrowthProcess/GrowthProcess.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --theme-orange: #FF9500;
+  --bg-dark-blue: #0B1120;
+  --card-bg: #151F32;
+  --text-white: #ffffff;
+  --text-grey-blue: #94A3B8;
+}
+
+.growth-section {
+  width: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: var(--bg-dark-blue);
+  padding: 150px 20px 100px 20px;
+  margin-top: -25px; /* Thora overlap krny k liye */
+  font-family: 'Inter', sans-serif;
+  z-index: 1;
+}
+
+.growth-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.growth-header {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.growth-badge {
+  display: inline-block;
+  color: var(--theme-orange);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  background: rgba(255, 149, 0, 0.08);
+  padding: 6px 14px;
+  border-radius: 4px;
+}
+
+.growth-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-white);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  white-space: nowrap; 
+}
+
+.growth-desc {
+  font-size: 1.1rem;
+  color: var(--text-grey-blue);
+  line-height: 1.6;
+  max-width: 900px;
+}
+
+/* Grid */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+/* --- Card Design Updated --- */
+.process-card {
+  background-color: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 35px 30px;
+  border-radius: 16px;
+  position: relative;
+  transition: transform 0.3s ease;
+  
+  /* Flex use kia ta k icon aur content align rahain */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.process-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 149, 0, 0.3);
+}
+
+/* --- NEW ICON STYLING (Circle & White) --- */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Pura Gol (Circle) */
+  background-color: rgba(255, 255, 255, 0.08); /* Halka sa glass effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.process-card:hover .icon-circle {
+  background-color: var(--theme-orange); /* Hover py orange ho jaye */
+  border-color: var(--theme-orange);
+}
+
+/* Icon SVG color */
+.icon-svg {
+  color: #ffffff; /* Bilkul White */
+  width: 28px;
+  height: 28px;
+}
+
+/* Text Styling */
+.card-meta {
+  font-size: 0.9rem;
+  color: var(--theme-orange);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin: 0 0 20px 0;
+}
+
+.card-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.card-list li {
+  color: var(--text-grey-blue);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.card-list li::before {
+  content: '•';
+  color: var(--theme-orange);
+  font-size: 1.2rem;
+  margin-right: 10px;
+  line-height: 1.2;
+}
+
+/* CTA */
+.growth-cta-btn {
+  background: var(--theme-orange);
+  color: white;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.growth-cta-btn:hover {
+  background-color: #e08200;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .growth-title { white-space: normal; font-size: 2.5rem; }
+  .process-grid { grid-template-columns: 1fr; max-width: 500px; }
+}

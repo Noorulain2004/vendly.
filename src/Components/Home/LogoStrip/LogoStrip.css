@@ -1,0 +1,83 @@
+/* LogoStrip.css */
+
+.logo-section {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  /* Hero section k oper overlap krny k liye negative margin */
+  margin-top: -50px; 
+  position: relative;
+  box-sizing: border-box;
+  z-index: 20; 
+}
+
+.logo-container {
+  width: auto;
+  max-width: 1200px;
+  
+  background-color: #ffffff;
+  border-radius: 100px; /* Pill Shape */
+  
+  /* --- NEW STRONGER SHADOW ADDED HERE --- */
+  /* Ye do layers wala shadow hai jo isy zameen sy utha hua dikhata hai */
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25), /* Bera, phaila hua saya */
+    0 10px 15px -3px rgba(0, 0, 0, 0.1);   /* Chota, qareebi saya definition k liye */
+  /* -------------------------------------- */
+  
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Halka sa border definition k liye */
+  
+  padding: 20px 60px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect par shadow aur gehra ho jaye */
+.logo-container:hover {
+  transform: translateY(-5px); /* Thora aur oper uthy */
+  box-shadow: 
+    0 35px 60px -15px rgba(0, 0, 0, 0.3),
+    0 15px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Baki CSS waisi hi rahy gi --- */
+.brand-logo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.logo-tall {
+  height: 38px !important;
+}
+
+.brand-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.15);
+  mix-blend-mode: normal;
+}
+
+@media (max-width: 768px) {
+  .logo-container {
+    width: 100%;
+    border-radius: 16px;
+    padding: 20px;
+    gap: 20px;
+    min-width: auto;
+  }
+  
+  .brand-logo { height: 22px; }
+  .logo-tall { height: 28px !important; }
+}

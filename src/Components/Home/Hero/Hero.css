@@ -1,0 +1,178 @@
+/* src/Components/Hero/Hero.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary-orange: #FF9500;
+  --orange-gradient: linear-gradient(90deg, #FF9500 0%, #FF5E00 100%);
+  --text-dark: #111827;
+  --text-grey: #6b7280;
+}
+
+.hero-section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 140px; /* Space for navbar */
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- Text Area --- */
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+  margin-bottom: 40px;
+  z-index: 10;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-grey);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Buttons --- */
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-primary {
+  background: var(--orange-gradient);
+  color: white;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(255, 149, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(255, 149, 0, 0.35);
+}
+
+.link-text {
+  color: var(--text-grey);
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.link-text:hover {
+  color: var(--primary-orange);
+}
+
+/* --- The Network Visual --- */
+.network-visual {
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  height: 500px; /* Adjust based on your background.png aspect ratio */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -20%;
+}
+
+/* The Orange Lines Image */
+.network-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Keeps the lines sharp */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* The Icons floating on top */
+.icon-node {
+  position: absolute;
+  z-index: 2;
+  width: 65px;
+  height: 65px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  animation: float 4s ease-in-out infinite;
+}
+
+.icon-node img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Central Logo is slightly bigger and orange */
+.center-logo {
+  top: 59%; 
+
+  width: 75px;
+  height: 75px;
+  z-index: 3;
+  background: transparent; /* Assuming your logo.png has the orange box already */
+  box-shadow: none;
+  animation: none; /* Center one stays still or pulses */
+}
+
+/* --- Positioning the Icons exactly like the image --- */
+/* Left Side */
+.pos-ebay { top: 25%; left: 18%; animation-delay: 0s; }
+.pos-woo  { top: 55%; left: 28%; animation-delay: 1s; }
+.pos-shop { top: 75%; left: 15%; animation-delay: 2s; }
+
+
+/* Right Side */
+.pos-tiktok { top: 25%; right: 18%; animation-delay: 0.5s; }
+.pos-meta   { top: 52%; right: 28%; animation-delay: 1.5s; }
+.pos-stripe { top: 72%; right: 20%; animation-delay: 2.5s; }
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.5rem; }
+  .network-visual { height: 300px; }
+  .icon-node { width: 40px; height: 40px; padding: 6px; }
+  .center-logo { width: 50px; height: 50px; }
+  
+  /* Squeeze icons closer on mobile */
+  .pos-ebay { left: 5%; }
+  .pos-shop { left: 2%; }
+  .pos-tiktok { right: 5%; }
+  .pos-stripe { right: 5%; }
+}

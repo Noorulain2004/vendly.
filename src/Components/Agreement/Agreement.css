@@ -1,0 +1,319 @@
+/* src/Components/Agreement/Agreement.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --theme-orange: #FF9500;
+  --bg-page: #f3f4f6; /* Thora sa dark grey ta k white paper nazar aye */
+  --bg-white: #ffffff;
+  --text-dark: #111827;
+  --text-grey: #4b5563;
+  --border-light: #e5e7eb;
+}
+
+.agreement-page {
+  min-height: 100vh;
+  background-color: var(--bg-page);
+ 
+  padding: 0px 0px 0px; 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Inter', sans-serif;
+}
+
+.agreement-paper {
+  background-color: var(--bg-white);
+  width: 100%;
+  max-width: 1500px; /* Standard A4ish width */
+  margin-top: 0px; /* Thora neechy start ho */
+  padding: 70px 60px; /* Andar khula space */
+  
+  /* Shadow for depth */
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
+  
+  /* --- THEME STYLING --- */
+  border-top: 8px solid var(--theme-orange); /* Orange Brand Line on Top */
+  position: relative;
+}
+
+/* --- DOCUMENT BORDER EFFECT (Double Line) --- */
+.agreement-paper::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 2px solid #e5e7eb; /* Inner border line */
+  pointer-events: none; /* Click block na kare */
+}
+
+/* --- Header --- */
+.agree-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid var(--border-light);
+  position: relative;
+  z-index: 2; /* Border k oper aye */
+}
+
+.agree-sub-badge {
+  display: inline-block;
+  background: #fff7ed; /* Light orange tint */
+  color: #c2410c; /* Darker orange text */
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: 1px solid rgba(255, 149, 0, 0.2);
+}
+
+.agree-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -1px;
+}
+
+.agree-intro {
+  color: var(--text-grey);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* --- Content Area --- */
+.terms-content {
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.term-block {
+  margin-bottom: 30px;
+}
+
+.term-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Numbering style (Optional) */
+.term-title::before {
+  /* content: '§ '; Section symbol looks legal */
+  color: var(--theme-orange);
+  margin-right: 8px;
+}
+
+.term-text {
+  font-size: 1rem;
+  color: var(--text-grey);
+  line-height: 1.8; /* Achi readability k liye */
+  margin: 0;
+  text-align: justify; /* Formal documents justified hotay hain */
+}
+
+.term-list {
+  list-style-type: none; /* Default bullets hataye */
+  padding-left: 10px;
+  margin-top: 12px;
+}
+
+.term-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  color: var(--text-grey);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Custom Orange Bullets */
+.term-list li::before {
+  content: '•';
+  color: var(--theme-orange);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+  top: -2px;
+}
+
+/* --- Interaction Area (Grey Box) --- */
+.interaction-area {
+  background: #f9fafb;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 30px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Checkbox */
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.custom-checkbox {
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+  accent-color: var(--theme-orange);
+  cursor: pointer;
+}
+
+.checkbox-label {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Signature Canvas */
+.signature-section {
+  margin-bottom: 10px;
+}
+
+.sig-label {
+  display: block;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sig-canvas-wrapper {
+  border: 2px dashed #cbd5e1; /* Sign karny ki jaga dashed line */
+  border-radius: 8px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  transition: all 0.3s;
+}
+
+.sig-canvas-wrapper:hover {
+  border-color: var(--theme-orange);
+  background-color: #fffbf5;
+}
+
+.clear-sig-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.clear-sig-btn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+  border-color: #fecaca;
+}
+
+.sig-hint {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 8px;
+  display: block;
+  font-style: italic;
+}
+
+/* --- Actions --- */
+.action-footer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-confirm {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--text-dark); /* Dark button looks official */
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 8px; /* Less rounded for formal look */
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-confirm:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.8;
+}
+
+.btn-confirm:not(:disabled):hover {
+  background-color: var(--theme-orange); /* Orange on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 149, 0, 0.25);
+}
+
+.back-link {
+  color: var(--text-grey);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--theme-orange);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .agreement-paper { 
+    padding: 40px 25px; 
+    margin-top: 0;
+  }
+  
+  .agreement-paper::before {
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+  }
+
+  .agree-title { font-size: 2rem; }
+  .term-text { text-align: left; }
+  .sig-canvas-wrapper { height: 160px; }
+  .agreement-page { padding: 40px 15px; }
+}

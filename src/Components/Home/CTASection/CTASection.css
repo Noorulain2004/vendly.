@@ -1,0 +1,77 @@
+/* src/Components/CTASection/CTASection.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --theme-orange: #FF9500;
+  --bg-dark-blue: #0B1120;
+  --text-white: #ffffff;
+  --text-grey-blue: #94A3B8;
+}
+
+.cta-section {
+  width: 100%;
+  background-color: var(--bg-dark-blue);
+  padding: 100px 20px 140px 20px; /* Bottom padding thori zyada */
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 800px;
+  width: 100%;
+}
+
+/* --- Typography --- */
+.cta-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-white);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+/* "Passive Income?" ko Orange krny k liye */
+.highlight-text {
+  color: var(--theme-orange);
+}
+
+.cta-desc {
+  font-size: 1.2rem;
+  color: var(--text-grey-blue);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* --- Button Styling --- */
+.cta-btn {
+  display: inline-block;
+  background-color: var(--theme-orange); /* Theme k mutabiq Orange */
+  color: white;
+  padding: 18px 50px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(255, 149, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  background-color: #e08200;
+  box-shadow: 0 20px 40px rgba(255, 149, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cta-title {
+    font-size: 2.5rem;
+  }
+  .cta-desc {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+}

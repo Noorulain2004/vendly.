@@ -1,0 +1,62 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  
+  --bg-dark-blue: #0B1120;
+  --theme-orange: #FF9500;
+  --text-white: #ffffff;
+}
+
+/* 1. Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. HTML & Body Fixes */
+html, body {
+  width: 100%;
+  max-width: 100%; /* Ensure it never exceeds screen */
+  overflow-x: hidden; /* Force hide horizontal scroll */
+  background-color: var(--bg-dark-blue); /* White gap ko dark kr day ga */
+  color: var(--text-white);
+  min-height: 100vh;
+}
+
+/* 3. React Root Container Fix */
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 4. Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b1120; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155; 
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF9500; 
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

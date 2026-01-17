@@ -1,0 +1,161 @@
+/* src/Components/Testimonials/Testimonials.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --theme-orange: #FF9500;
+  
+  /* --- LIGHT THEME COLORS --- */
+  --bg-white: #ffffff;
+  --card-light-grey: #f9fafb; /* Card ka halka grey rang */
+  --text-dark: #111827;       /* Kala text ta k safaid par nazar aye */
+  --text-grey: #4b5563;
+  --border-light: #e5e7eb;
+}
+
+.testimonials-section {
+  width: 100%;
+  
+  /* --- BACKGROUND CHANGED TO WHITE --- */
+  background-color: var(--bg-white); 
+  /* ---------------------------------- */
+  
+  padding: 100px 0;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* --- Header --- */
+.testi-header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 0 20px;
+}
+
+.testi-label {
+  display: inline-block;
+  color: var(--theme-orange);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  background: rgba(255, 149, 0, 0.1); /* Light Orange BG */
+  padding: 6px 14px;
+  border-radius: 4px;
+}
+
+.testi-title {
+  font-size: 3rem;
+  font-weight: 800;
+  
+  /* --- TEXT COLOR CHANGED TO DARK --- */
+  color: var(--text-dark);
+  /* ---------------------------------- */
+}
+
+/* --- Marquee Container --- */
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  /* Edges fade effect */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* --- Card Styling (Updated for Light Theme) --- */
+.testi-card {
+  width: 450px;
+  
+  /* --- CARD BACKGROUND & BORDER --- */
+  background-color: var(--card-light-grey); /* Halka Grey ta k White par nazar aye */
+  border: 1px solid var(--border-light);
+  /* ------------------------------- */
+  
+  padding: 40px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.testi-card:hover {
+  border-color: var(--theme-orange);
+  background-color: #ffffff; /* Hover py full white ho jaye */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Halka sa saya */
+}
+
+/* Stars */
+.star-rating {
+  color: var(--theme-orange);
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+/* Quote Text (Dark Grey) */
+.testi-quote {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  
+  /* --- TEXT COLOR UPDATED --- */
+  color: var(--text-grey); 
+  /* -------------------------- */
+  
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* User Profile Area */
+.testi-user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 149, 0, 0.2);
+  object-fit: cover;
+}
+
+.user-info h4 {
+  /* --- NAME COLOR UPDATED --- */
+  color: var(--text-dark);
+  /* -------------------------- */
+  
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.user-info span {
+  color: #6b7280; /* Light Grey for role */
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Animation --- */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testi-card { width: 320px; padding: 25px; }
+  .testi-title { font-size: 2.2rem; }
+}

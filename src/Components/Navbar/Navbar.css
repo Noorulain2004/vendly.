@@ -1,0 +1,201 @@
+/* Navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  /* THEME COLORS */
+  --primary-orange: #FF9500;
+  --dark-orange: #e08200;
+  --gradient-start: #FF9500;
+  --gradient-end: #FF5E00; /* A slightly redder orange for the gradient */
+  
+  --text-dark: #1f2937;
+  --text-gray: #4b5563;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6;
+}
+
+/* --- Floating Container with Animation --- */
+.navbar-wrapper {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  /* Center horizontally & start slightly higher for animation */
+  transform: translateX(-50%); 
+  
+  /* WIDTH INCREASED as requested */
+  width: 95%; 
+  max-width: 1400px; /* Increased from 1100px to 1400px */
+  
+  z-index: 1000;
+  
+  /* Entrance Animation */
+  animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0; /* Hidden initially, revealed by animation */
+}
+
+/* Keyframes for the slide-down effect */
+@keyframes slideDown {
+  from {
+    top: -50px;
+    opacity: 0;
+  }
+  to {
+    top: 24px;
+    opacity: 1;
+  }
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.95); /* White Background */
+  backdrop-filter: blur(12px);
+  padding: 15px 40px; /* Slightly larger padding */
+  border-radius: 100px; /* Full pill shape */
+  
+  /* Soft Shadow */
+  box-shadow: 0 10px 40px -10px rgba(255, 149, 0, 0.15), 
+              0 0 2px rgba(0, 0, 0, 0.05);
+  
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+/* --- Logo --- */
+.logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: -0.5px;
+  transition: color 0.3s ease;
+}
+
+.logo span {
+  color: var(--primary-orange); /* Highlight part of logo if needed */
+}
+
+/* --- Desktop Links --- */
+.nav-links {
+  display: flex;
+  gap: 40px; /* Increased spacing */
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-gray);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Orange Hover Effect for links */
+.nav-link:hover {
+  color: var(--primary-orange);
+}
+
+/* Optional: Underline animation on hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--primary-orange);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* --- CTA Button (Orange Gradient) --- */
+.btn-partner {
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  
+  /* THE ORANGE GRADIENT */
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  
+  /* Glow Effect */
+  box-shadow: 0 10px 20px -5px rgba(255, 149, 0, 0.4);
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Button Hover Animation */
+.btn-partner:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 15px 25px -5px rgba(255, 149, 0, 0.5);
+}
+
+.btn-partner:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* --- Mobile Menu Toggle --- */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--white);
+}
+
+/* --- Mobile Dropdown --- */
+.mobile-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 40px -5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+  
+  /* Animation for mobile menu */
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 900px) {
+  .nav-links, .btn-partner.desktop-only {
+    display: none;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-container {
+    padding: 12px 24px;
+  }
+  
+  .navbar-wrapper {
+    width: 92%; /* Slightly smaller on mobile */
+  }
+}
