@@ -7,7 +7,6 @@ import bigcommerce from '../../../assets/Home/Borderline/bigcommerce.png';
 import ebay from '../../../assets/Home/Borderline/ebay.png';
 import etsy from '../../../assets/Home/Borderline/etsy.png';
 import shopify from '../../../assets/Home/Borderline/shopify.png';
-import walmart from '../../../assets/Home/Borderline/walmart.png';
 import woocommerce from '../../../assets/Home/Borderline/woocommerce.png';
 
 const LogoStrip = () => {
@@ -21,7 +20,7 @@ const LogoStrip = () => {
     { id: 4, src: shopify, alt: 'Shopify', className: 'brand-logo logo-tall' },
     { id: 5, src: woocommerce, alt: 'WooCommerce', className: 'brand-logo logo-tall' },
     { id: 6, src: bigcommerce, alt: 'BigCommerce', className: 'brand-logo logo-tall' },
-    { id: 7, src: walmart, alt: 'Walmart', className: 'brand-logo logo-tall' },
+    
   ];
 
   return (

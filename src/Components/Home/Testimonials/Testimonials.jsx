@@ -54,7 +54,7 @@ const Testimonials = () => {
       {/* Header */}
       <div className="testi-header">
         <span className="testi-label">Success Stories</span>
-        <h2 className="testi-title">Trusted by 500+ Store Owners</h2>
+        <h2 className="testi-title">Exclusive Partnerships with Trusted Entrepreneurs</h2>
       </div>
 
       {/* Marquee Wrapper */}

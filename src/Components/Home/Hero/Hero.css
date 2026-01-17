@@ -104,7 +104,7 @@
   height: 100%;
   object-fit: contain; /* Keeps the lines sharp */
   position: absolute;
-  top: 0;
+  bottom: 25px;
   left: 0;
   z-index: 1;
   pointer-events: none;
@@ -134,15 +134,49 @@
 }
 
 /* Central Logo is slightly bigger and orange */
+/* Central Logo (Desktop Defaults) */
 .center-logo {
-  top: 59%; 
+  /* Positioning */
+  position: absolute;
+  /* Agar lines image k center main hain to 50% hona chahiye, 
+     magar visual balance k liye 60% behtar lagta hai */
+  top: 60%; 
+  left: 50%;
+  transform: translate(-50%, -50%); /* Bilkul center krny k liye zaroori */
 
+  /* Sizing & Style */
   width: 75px;
   height: 75px;
-  z-index: 3;
-  background: transparent; /* Assuming your logo.png has the orange box already */
+  z-index: 5; /* Z-index barhaya ta k yaqeenan oper rahy */
+  
+  background: transparent;
   box-shadow: none;
-  animation: none; /* Center one stays still or pulses */
+  animation: none;
+
+  /* Smooth Movement when resizing */
+  transition: all 0.3s ease;
+}
+
+
+/* Tablet (iPad waghera) */
+@media (max-width: 900px) {
+  .center-logo {
+    width: 65px;  /* Size thora chota */
+    height: 65px;
+    top: 54%;     /* Thora sa oper kia */
+  }
+}
+
+/* Mobile (Phone) */
+@media (max-width: 600px) {
+  .center-logo {
+    width: 55px;  /* Size kafi chota */
+    height: 55px;
+    
+    /* Mobile pr background image crop hoti hai, 
+       isliye exact 50% center best rehta hai */
+    top: 55%;     
+  }
 }
 
 /* --- Positioning the Icons exactly like the image --- */
