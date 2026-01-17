@@ -1,70 +1,47 @@
-/* Navbar.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/* src/Components/Navbar/Navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
   /* THEME COLORS */
   --primary-orange: #FF9500;
   --dark-orange: #e08200;
   --gradient-start: #FF9500;
-  --gradient-end: #FF5E00; /* A slightly redder orange for the gradient */
+  --gradient-end: #FF5E00;
   
   --text-dark: #1f2937;
   --text-gray: #4b5563;
   --white: #ffffff;
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #f3f4f6;
-}
-
-/* --- Floating Container with Animation --- */
+/* --- Floating Container --- */
 .navbar-wrapper {
   position: fixed;
   top: 24px;
   left: 50%;
-  /* Center horizontally & start slightly higher for animation */
   transform: translateX(-50%); 
-  
-  /* WIDTH INCREASED as requested */
   width: 95%; 
-  max-width: 1400px; /* Increased from 1100px to 1400px */
-  
+  max-width: 1400px;
   z-index: 1000;
-  
-  /* Entrance Animation */
   animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0; /* Hidden initially, revealed by animation */
+  opacity: 0;
 }
 
-/* Keyframes for the slide-down effect */
 @keyframes slideDown {
-  from {
-    top: -50px;
-    opacity: 0;
-  }
-  to {
-    top: 24px;
-    opacity: 1;
-  }
+  from { top: -50px; opacity: 0; }
+  to { top: 24px; opacity: 1; }
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.95); /* White Background */
+  background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
-  padding: 15px 40px; /* Slightly larger padding */
-  border-radius: 100px; /* Full pill shape */
-  
-  /* Soft Shadow */
-  box-shadow: 0 10px 40px -10px rgba(255, 149, 0, 0.15), 
-              0 0 2px rgba(0, 0, 0, 0.05);
-  
+  padding: 15px 40px;
+  border-radius: 100px;
+  box-shadow: 0 10px 40px -10px rgba(255, 149, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  transition: all 0.3s ease;
+  position: relative; /* For mobile menu positioning */
 }
 
 /* --- Logo --- */
@@ -75,17 +52,13 @@ body {
   text-decoration: none;
   white-space: nowrap;
   letter-spacing: -0.5px;
-  transition: color 0.3s ease;
-}
-
-.logo span {
-  color: var(--primary-orange); /* Highlight part of logo if needed */
 }
 
 /* --- Desktop Links --- */
 .nav-links {
   display: flex;
-  gap: 40px; /* Increased spacing */
+  gap: 40px;
+  align-items: center;
 }
 
 .nav-link {
@@ -97,12 +70,11 @@ body {
   transition: color 0.3s ease;
 }
 
-/* Orange Hover Effect for links */
 .nav-link:hover {
   color: var(--primary-orange);
 }
 
-/* Optional: Underline animation on hover */
+/* Orange underline on hover */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -118,7 +90,14 @@ body {
   width: 100%;
 }
 
-/* --- CTA Button (Orange Gradient) --- */
+/* --- Right Side Actions --- */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* --- CTA Button --- */
 .btn-partner {
   padding: 12px 32px;
   border-radius: 50px;
@@ -126,76 +105,95 @@ body {
   font-weight: 700;
   color: var(--white);
   text-decoration: none;
-  border: none;
-  cursor: pointer;
-  
-  /* THE ORANGE GRADIENT */
   background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-  
-  /* Glow Effect */
   box-shadow: 0 10px 20px -5px rgba(255, 149, 0, 0.4);
-  
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  white-space: nowrap;
 }
 
-/* Button Hover Animation */
 .btn-partner:hover {
-  transform: translateY(-2px) scale(1.02);
+  transform: translateY(-2px);
   box-shadow: 0 15px 25px -5px rgba(255, 149, 0, 0.5);
 }
 
-.btn-partner:active {
-  transform: translateY(0) scale(0.98);
-}
-
-/* --- Mobile Menu Toggle --- */
+/* --- Mobile Menu Toggle (Hamburger) --- */
 .menu-toggle {
-  display: none;
+  display: none; /* Desktop pr hidden */
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--white);
+  color: var(--text-dark); /* FIXED: Black color on white bg */
+  padding: 5px;
+  transition: color 0.3s;
 }
 
-/* --- Mobile Dropdown --- */
+.menu-toggle:hover {
+  color: var(--primary-orange);
+}
+
+/* --- Mobile Dropdown Menu --- */
 .mobile-menu {
   position: absolute;
-  top: 120%;
+  top: calc(100% + 15px); /* Navbar se thora neeche */
   left: 0;
   width: 100%;
-  background: white;
+  background: #ffffff;
   border-radius: 24px;
-  padding: 24px;
-  box-shadow: 0 20px 40px -5px rgba(0,0,0,0.1);
+  padding: 30px 20px;
+  box-shadow: 0 20px 50px -10px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
   text-align: center;
+  border: 1px solid rgba(0,0,0,0.05);
   
-  /* Animation for mobile menu */
-  animation: fadeIn 0.3s ease forwards;
+  /* Animation */
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: mobileFadeIn 0.3s ease forwards;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
+@keyframes mobileFadeIn {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Responsive Breakpoints --- */
-@media (max-width: 900px) {
-  .nav-links, .btn-partner.desktop-only {
+.mobile-menu .nav-link {
+  font-size: 1.1rem;
+  padding: 10px;
+  display: block;
+  border-radius: 8px;
+}
+
+.mobile-menu .nav-link:hover {
+  background-color: #f9fafb;
+}
+
+.mobile-menu .btn-partner {
+  margin-top: 10px;
+  display: inline-block; /* Mobile main button wapis show karnay k liye */
+  width: 100%; /* Full width button on mobile */
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 992px) {
+  /* Hide Desktop Nav & Button */
+  .nav-links, 
+  .btn-partner.desktop-only {
     display: none;
   }
   
+  /* Show Toggle Button */
   .menu-toggle {
     display: block;
   }
 
+  /* Adjust Navbar Padding */
   .navbar-container {
     padding: 12px 24px;
   }
   
   .navbar-wrapper {
-    width: 92%; /* Slightly smaller on mobile */
+    width: 92%; 
+    top: 20px;
   }
 }
