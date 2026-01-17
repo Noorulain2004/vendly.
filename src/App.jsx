@@ -1,6 +1,6 @@
 import { Routes, Route, Outlet } from "react-router-dom"; // 1. Outlet import karein
 import Navbar from "./Components/Navbar/Navbar.jsx";
-
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop.jsx';
 import Home from "./Pages/Home.jsx";
 import Working from "./Pages/working.jsx";
 import Model from "./Pages/Model.jsx";
@@ -13,6 +13,7 @@ import "./App.css";
 const LayoutWithNavbar = () => {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <Outlet /> {/* Baqi saray pages yahan render hon gay */}
     </>

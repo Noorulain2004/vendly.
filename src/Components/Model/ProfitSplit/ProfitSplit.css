@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --theme-orange: #FF9500;
-  --theme-orange-dim: rgba(255, 149, 0, 0.1);
+  --profit-green: #10b981; /* Screenshot wala Green */
+  --profit-dark: #1f2937;  /* Our Share wala Dark Grey */
   --bg-dark-blue: #0B1120;
-  --card-dark: #111827;
+  --card-bg: #111827;      /* Thora lighter dark card k liye */
   --text-white: #ffffff;
   --text-grey: #9ca3af;
 }
@@ -13,47 +13,40 @@
 .profit-section {
   width: 100%;
   background-color: var(--bg-dark-blue);
-  /* Height increased */
-  padding: 140px 20px; 
-  min-height: 100vh; /* Takes full viewport height */
+  padding: 100px 20px;
   font-family: 'Inter', sans-serif;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .profit-container {
-  max-width: 1300px; /* Wider container */
+  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
 }
 
 /* --- Header --- */
 .ps-header {
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 
 .ps-title {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800;
   color: var(--text-white);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .ps-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--text-grey);
 }
 
-/* --- Main Split Grid (Chart vs Details) --- */
-.ps-main-grid {
+/* --- Content Grid --- */
+.ps-grid {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 80px;
-  margin-bottom: 120px; /* Space before bottom cards */
+  gap: 60px;
 }
 
 /* --- Left: Bar Chart --- */
@@ -61,20 +54,22 @@
   flex: 1;
   position: relative;
   padding-right: 20px;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 50px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1); /* Y-Axis Line */
+  padding-bottom: 40px; /* Space for X-Axis */
 }
 
+/* Horizontal Axis Line */
 .chart-container::after {
   content: '';
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   left: 0;
   width: 100%;
   height: 1px;
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* X-Axis Numbers */
 .x-axis-labels {
   position: absolute;
   bottom: 0;
@@ -83,178 +78,126 @@
   display: flex;
   justify-content: space-between;
   color: var(--text-grey);
-  font-size: 1rem;
-  padding-left: 80px;
+  font-size: 0.9rem;
+  padding-left: 60px; /* Offset for Y-labels */
 }
 
+/* Bar Groups */
 .bar-group {
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   position: relative;
 }
 
 .y-label {
-  width: 80px;
+  width: 60px;
   text-align: right;
   color: var(--text-white);
   font-weight: 600;
-  font-size: 1.1rem;
-  margin-right: 25px;
+  font-size: 0.9rem;
+  margin-right: 20px;
   line-height: 1.2;
 }
 
 .bar-track {
   flex: 1;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 0 12px 12px 0;
+  border-radius: 0 8px 8px 0;
   overflow: hidden;
-  height: 140px; /* Taller Bars */
+  height: 120px; /* Bars ki motai */
   position: relative;
 }
 
 .bar-fill {
   height: 100%;
-  width: 0%;
-  border-radius: 0 12px 12px 0;
+  width: 0%; /* Start width 0 for animation */
+  border-radius: 0 8px 8px 0;
   transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 20px;
 }
 
-/* CHANGED TO ORANGE */
-.fill-orange { 
-  background-color: var(--theme-orange); 
-  box-shadow: 0 0 30px rgba(255, 149, 0, 0.3);
-}
+.fill-green { background-color: var(--profit-green); }
+.fill-dark { background-color: var(--profit-dark); }
 
-.fill-dark { background-color: #1f2937; }
-
-.bar-text-overlay {
-  color: white;
-  font-weight: 800;
-  font-size: 2rem;
-  opacity: 0;
-  transition: opacity 0.5s delay 1s;
-}
-
-.bar-fill.filled .bar-text-overlay {
-  opacity: 1;
-}
-
-/* --- Right: Text Info --- */
+/* --- Right: Info Cards --- */
 .info-column {
-  flex: 0.8;
+  flex: 0.9;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-.split-card {
-  background: var(--card-dark);
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.info-card {
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
 }
 
-.sc-header {
+.info-card:hover {
+  transform: translateX(10px);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card-header {
   display: flex;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
-.percent-badge {
-  background: var(--theme-orange);
-  color: white;
-  font-weight: 800;
-  font-size: 1.5rem;
-  width: 80px;
-  height: 80px;
+.percent-circle {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 10px 20px rgba(255, 149, 0, 0.3);
-}
-
-.sc-title {
-  font-size: 2rem;
   font-weight: 800;
-  color: white;
-}
-
-.sc-desc {
-  color: var(--text-grey);
   font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 30px;
-}
-
-.quote-highlight {
-  border-left: 4px solid var(--theme-orange);
-  padding-left: 20px;
   color: white;
-  font-size: 1.2rem;
-  font-style: italic;
-  font-weight: 500;
 }
 
-/* --- Bottom: Feature Cards (New Image Content) --- */
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
+.circle-green { background: var(--profit-green); }
+.circle-dark { background: rgba(255, 255, 255, 0.1); color: var(--text-grey); }
 
-.benefit-card {
-  background: var(--card-dark);
-  padding: 40px 30px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.benefit-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--theme-orange);
-}
-
-/* Icon Styles */
-.icon-box {
-  width: 60px;
-  height: 60px;
-  background: var(--theme-orange-dim);
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 24px;
-  color: var(--theme-orange);
-}
-
-.benefit-icon {
-  width: 32px;
-  height: 32px;
-}
-
-.benefit-title {
+.card-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: white;
-  margin-bottom: 16px;
+  color: var(--text-white);
 }
 
-.benefit-desc {
+.card-desc {
   color: var(--text-grey);
-  font-size: 1rem;
   line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Quote Box */
+.quote-box {
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--profit-green);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 /* Responsive */
-@media (max-width: 1000px) {
-  .ps-main-grid { flex-direction: column; gap: 60px; }
-  .chart-container { width: 100%; padding-right: 0; }
-  .benefits-grid { grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+  .ps-grid {
+    flex-direction: column;
+  }
+  
+  .chart-container {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .bar-track {
+    height: 80px; /* Mobile py bars thori patli */
+  }
 }

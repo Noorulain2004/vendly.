@@ -21,11 +21,12 @@
     0 10px 15px -3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 25px 60px;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Desktop pr wrap ho sakty hain */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -82,40 +83,26 @@
   .logo-container {
     width: 100%;
     border-radius: 20px; 
-    padding: 25px 20px;
-    gap: 20px; /* Gap adjusted for 3 logos */
-    justify-content: space-evenly; /* Even spacing for the 3 logos */
+    padding: 20px 15px; /* Padding kam ki */
+    
+    /* --- IMPORTANT FOR SINGLE ROW --- */
+    flex-wrap: nowrap; /* Wrap band kia ta k aik line main rahain */
+    justify-content: space-between; /* Barabar faasla */
+    gap: 10px; /* Gap kam kia ta k fit ayen */
   }
   
   .brand-logo {
-    height: 28px; /* Slightly larger for better visibility */
+    height: auto; /* Height auto ki */
+    max-height: 25px; /* Max height set ki */
+    max-width: 30%; /* Ta k 3 logos 100% width main fit ho jayen */
     opacity: 0.8;
   }
 
   .logo-tall {
-    height: 36px !important;
+    max-height: 32px !important;
   }
 
   /* --- HIDE LOGOS AFTER THE 3RD ONE --- */
-  /* Ye rule 4th logo aur us k baad any waly tamam logos ko chupa dy ga */
-  .brand-logo:nth-child(n+4) {
-    display: none;
-  }
-}
-
-/* Small Phones (Max Width: 480px) */
-@media (max-width: 480px) {
-  .logo-container {
-    padding: 20px 15px;
-    gap: 15px;
-    border-radius: 16px;
-  }
-
-  .brand-logo {
-    height: 24px;
-  }
-  
-  /* Ensure they stay hidden */
   .brand-logo:nth-child(n+4) {
     display: none;
   }

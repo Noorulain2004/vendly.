@@ -18,17 +18,29 @@
   position: fixed;
   top: 24px;
   left: 50%;
-  transform: translateX(-50%); 
+  transform: translateX(-50%); /* Centered horizontally */
+  
   width: 95%; 
   max-width: 1400px;
   z-index: 1000;
+  
+  /* Initial Entry Animation */
   animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
+  
+  /* --- NEW: Smooth Transition for Scroll Effect --- */
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease;
 }
 
 @keyframes slideDown {
   from { top: -50px; opacity: 0; }
   to { top: 24px; opacity: 1; }
+}
+
+/* --- NEW CLASS: Hide Navbar --- */
+.navbar-hidden {
+  /* Uper ki taraf move ho jaye ga (Hide) lekin Horizontal center rahy ga */
+  transform: translate(-50%, -200%); 
+  /* opacity: 0; Agar ap chahty hein k wo ghayab hoty huay dhundla ho */
 }
 
 .navbar-container {
@@ -41,7 +53,7 @@
   border-radius: 100px;
   box-shadow: 0 10px 40px -10px rgba(255, 149, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  position: relative; /* For mobile menu positioning */
+  position: relative; 
 }
 
 /* --- Logo --- */
@@ -118,11 +130,11 @@
 
 /* --- Mobile Menu Toggle (Hamburger) --- */
 .menu-toggle {
-  display: none; /* Desktop pr hidden */
+  display: none; 
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-dark); /* FIXED: Black color on white bg */
+  color: var(--text-dark); 
   padding: 5px;
   transition: color 0.3s;
 }
@@ -134,7 +146,7 @@
 /* --- Mobile Dropdown Menu --- */
 .mobile-menu {
   position: absolute;
-  top: calc(100% + 15px); /* Navbar se thora neeche */
+  top: calc(100% + 15px); 
   left: 0;
   width: 100%;
   background: #ffffff;
@@ -147,7 +159,6 @@
   text-align: center;
   border: 1px solid rgba(0,0,0,0.05);
   
-  /* Animation */
   opacity: 0;
   transform: translateY(-10px);
   animation: mobileFadeIn 0.3s ease forwards;
@@ -170,24 +181,21 @@
 
 .mobile-menu .btn-partner {
   margin-top: 10px;
-  display: inline-block; /* Mobile main button wapis show karnay k liye */
-  width: 100%; /* Full width button on mobile */
+  display: inline-block; 
+  width: 100%; 
 }
 
 /* --- RESPONSIVE BREAKPOINTS --- */
 @media (max-width: 992px) {
-  /* Hide Desktop Nav & Button */
   .nav-links, 
   .btn-partner.desktop-only {
     display: none;
   }
   
-  /* Show Toggle Button */
   .menu-toggle {
     display: block;
   }
 
-  /* Adjust Navbar Padding */
   .navbar-container {
     padding: 12px 24px;
   }

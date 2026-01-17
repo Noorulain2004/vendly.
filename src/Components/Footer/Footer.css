@@ -183,3 +183,104 @@
     gap: 40px;
   }
 }
+/* =========================================
+   MOBILE OPTIMIZATION (CLEAN & SHORT)
+   ========================================= */
+
+@media (max-width: 768px) {
+  
+  .footer-section {
+    padding: 30px 20px 20px;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* --- 1. BRAND SECTION --- */
+  .footer-brand {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* Description Hide (Ta k lamba na ho) */
+  .footer-desc {
+    display: none; 
+  }
+
+  .footer-logo {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+  }
+
+  /* --- 2. HIDE "COMPANY" LINKS (Home, How it works etc) --- */
+  /* Ye pehla .footer-col hai, isy chupa dia */
+  .footer-col:nth-of-type(1) {
+    display: none;
+  }
+
+  /* --- 3. SHOW "SUPPORT" LINKS (FAQ, Contact, Partnership) --- */
+  /* Ye dosra .footer-col hai, isy dikhana hai */
+  .footer-col:nth-of-type(2) {
+    width: 100%;
+  }
+
+  .footer-col:nth-of-type(2) h3 {
+    display: none; /* Heading "Support" ki zaroorat nahi mobile pr */
+  }
+
+  /* Links ko thora khula aur bara dikhana ta k click krna asan ho */
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Links k darmian gap */
+  }
+
+  .footer-links li {
+    margin: 0;
+  }
+
+  .footer-links a {
+    font-size: 1rem;
+    font-weight: 600; /* Thora bold ta k main links lagain */
+    color: var(--text-dark); /* Dark color for better visibility */
+  }
+
+  /* --- 4. SOCIAL ICONS --- */
+  .footer-col:last-of-type {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-light); /* Separation line */
+  }
+
+  .footer-col:last-of-type h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+  }
+
+  .social-icons {
+    gap: 20px;
+  }
+
+  /* --- 5. BOTTOM COPYRIGHT --- */
+  .footer-bottom {
+    padding-top: 10px;
+    border: none;
+  }
+
+  .copyright-text {
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+}

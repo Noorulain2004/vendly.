@@ -1,17 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
 import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // --- SCROLL DETECTION LOGIC ---
+  useEffect(() => {
+    const controlNavbar = () => {
+      // Current scroll position
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Agar neechy scroll kr rhy hain aur 100px se agay hain -> HIDE
+        setIsVisible(false);
+      } else {
+        // Agar uper scroll kr rhy hain -> SHOW
+        setIsVisible(true);
+      }
+
+      // Remember current position for next time
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', controlNavbar);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY]);
+
   return (
     <>
-      <nav className="navbar-wrapper">
+      {/* Dynamic Class add ki hai: 'navbar-hidden' agar visible false ho */}
+      <nav className={`navbar-wrapper ${isVisible ? '' : 'navbar-hidden'}`}>
         <div className="navbar-container">
           
           {/* Logo */}
@@ -30,7 +59,6 @@ const Navbar = () => {
 
           {/* Right Side */}
           <div className="navbar-actions">
-            {/* LINKED TO AGREEMENT PAGE */}
             <Link to="/agreement" className="btn-partner desktop-only">
               Start Partnership
             </Link>
@@ -50,12 +78,8 @@ const Navbar = () => {
               <Link to="/" className="nav-link" onClick={toggleMenu}>Home</Link>
               <Link to="/how-it-works" className="nav-link" onClick={toggleMenu}>How It Works</Link>
               <Link to="/our-model" className="nav-link" onClick={toggleMenu}>Our Model</Link>
-              
-              {/* FIXED: All links are now <Link> components */}
               <Link to="/faq" className="nav-link" onClick={toggleMenu}>FAQ</Link>
               <Link to="/contact" className="nav-link" onClick={toggleMenu}>Contact Us</Link>
-              
-              {/* FIXED: Start Partnership now goes to Agreement */}
               <Link to="/agreement" className="btn-partner" onClick={toggleMenu}>Start Partnership</Link>
             </div>
           )}
