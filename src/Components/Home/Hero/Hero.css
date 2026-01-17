@@ -18,6 +18,7 @@
   padding-top: 140px; /* Space for navbar */
   overflow: hidden;
   font-family: 'Inter', sans-serif;
+  position: relative;
 }
 
 /* --- Text Area --- */
@@ -86,12 +87,12 @@
   color: var(--primary-orange);
 }
 
-/* --- The Network Visual --- */
+/* --- The Network Visual (Desktop Only) --- */
 .network-visual {
   position: relative;
   width: 100%;
   max-width: 2000px;
-  height: 500px; /* Adjust based on your background.png aspect ratio */
+  height: 500px; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,7 +103,7 @@
 .network-bg {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Keeps the lines sharp */
+  object-fit: contain;
   position: absolute;
   bottom: 25px;
   left: 0;
@@ -133,60 +134,26 @@
   object-fit: contain;
 }
 
-/* Central Logo is slightly bigger and orange */
-/* Central Logo (Desktop Defaults) */
+/* Central Logo */
 .center-logo {
-  /* Positioning */
   position: absolute;
-  /* Agar lines image k center main hain to 50% hona chahiye, 
-     magar visual balance k liye 60% behtar lagta hai */
   top: 60%; 
   left: 50%;
-  transform: translate(-50%, -50%); /* Bilkul center krny k liye zaroori */
-
-  /* Sizing & Style */
+  transform: translate(-50%, -50%); 
   width: 75px;
   height: 75px;
-  z-index: 5; /* Z-index barhaya ta k yaqeenan oper rahy */
-  
+  z-index: 5; 
   background: transparent;
   box-shadow: none;
   animation: none;
-
-  /* Smooth Movement when resizing */
   transition: all 0.3s ease;
 }
 
-
-/* Tablet (iPad waghera) */
-@media (max-width: 900px) {
-  .center-logo {
-    width: 65px;  /* Size thora chota */
-    height: 65px;
-    top: 54%;     /* Thora sa oper kia */
-  }
-}
-
-/* Mobile (Phone) */
-@media (max-width: 600px) {
-  .center-logo {
-    width: 55px;  /* Size kafi chota */
-    height: 55px;
-    
-    /* Mobile pr background image crop hoti hai, 
-       isliye exact 50% center best rehta hai */
-    top: 55%;     
-  }
-}
-
 /* --- Positioning the Icons exactly like the image --- */
-/* Left Side */
 .pos-ebay { top: 25%; left: 18%; animation-delay: 0s; }
 .pos-woo  { top: 55%; left: 28%; animation-delay: 1s; }
 .pos-shop { top: 75%; left: 15%; animation-delay: 2s; }
 
-
-/* Right Side */
 .pos-tiktok { top: 25%; right: 18%; animation-delay: 0.5s; }
 .pos-meta   { top: 52%; right: 28%; animation-delay: 1.5s; }
 .pos-stripe { top: 72%; right: 20%; animation-delay: 2.5s; }
@@ -197,16 +164,42 @@
   50% { transform: translateY(-10px); }
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .hero-title { font-size: 2.5rem; }
-  .network-visual { height: 300px; }
-  .icon-node { width: 40px; height: 40px; padding: 6px; }
-  .center-logo { width: 50px; height: 50px; }
+/* ==============================================
+   MOBILE RESPONSIVE (HIDE NETWORK VISUAL)
+   ============================================== */
+
+/* Tablet & Mobile (Max Width 900px) */
+@media (max-width: 900px) {
   
-  /* Squeeze icons closer on mobile */
-  .pos-ebay { left: 5%; }
-  .pos-shop { left: 2%; }
-  .pos-tiktok { right: 5%; }
-  .pos-stripe { right: 5%; }
+  .hero-section {
+    min-height: auto; /* Full height ki zaroorat nahi ab */
+    padding-bottom: 80px; /* Thora gap neechy */
+  }
+
+  .hero-title { 
+    font-size: 2.8rem; 
+  }
+
+  /* Yahan hum Network Visual ko chupayenge */
+  .network-visual { 
+    display: none !important; /* Hide Lines, Icons & Logo */
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 600px) {
+  .hero-section {
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
+  
+  .hero-title { 
+    font-size: 2.2rem; 
+    margin-bottom: 16px;
+  }
+  
+  /* Ensure it stays hidden */
+  .network-visual {
+    display: none !important;
+  }
 }
