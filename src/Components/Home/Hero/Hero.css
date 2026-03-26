@@ -164,42 +164,82 @@
   50% { transform: translateY(-10px); }
 }
 
-/* ==============================================
-   MOBILE RESPONSIVE (HIDE NETWORK VISUAL)
-   ============================================== */
-
-/* Tablet & Mobile (Max Width 900px) */
-@media (max-width: 900px) {
-  
-  .hero-section {
-    min-height: auto; /* Full height ki zaroorat nahi ab */
-    padding-bottom: 80px; /* Thora gap neechy */
-  }
-
-  .hero-title { 
-    font-size: 2.8rem; 
-  }
-
-  /* Yahan hum Network Visual ko chupayenge */
-  .network-visual { 
-    display: none !important; /* Hide Lines, Icons & Logo */
-  }
-}
-
-/* Small Mobile */
 @media (max-width: 600px) {
   .hero-section {
-    padding-top: 120px;
-    padding-bottom: 60px;
+    padding-top: 100px;
+    text-align: left; /* Align text left like the example */
+    align-items: flex-start;
   }
-  
-  .hero-title { 
-    font-size: 2.2rem; 
-    margin-bottom: 16px;
+
+  .hero-content {
+    text-align: left;
+    padding: 0 30px;
   }
-  
-  /* Ensure it stays hidden */
+
+  .hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-subtitle {
+    margin-left: 0;
+    font-size: 1.2rem;
+  }
+
+  .hero-cta-group {
+    align-items: flex-start; /* Button on the left */
+  }
+
+  /* --- The Floating Network Area --- */
   .network-visual {
-    display: none !important;
+    display: block !important;
+    position: relative;
+    width: 100%;
+    height: 300px; /* Give it enough height to show the cluster */
+    margin-top: 20px;
+  }
+
+  /* The background lines - scale them down to fit mobile width */
+  .network-bg {
+    display: block; 
+    width: 90%;
+    left: 5%;
+    bottom: 50px;
+  }
+
+  .icon-node {
+    width: 45px; /* Smaller icons for mobile */
+    height: 45px;
+    padding: 8px;
+    border-radius: 10px;
+  }
+
+  /* Central Logo Positioning */
+  .center-logo {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    width: 55px;
+    height: 55px;
+  }
+
+  /* Specific Mobile Coordinates to keep them visible on screen */
+  .pos-ebay   { top: 15%; left: 15%; }
+  .pos-woo    { top: 40%; left: 25%; }
+  .pos-shop   { top: 65%; left: 15%; }
+
+  .pos-tiktok { top: 15%; right: 15%; }
+  .pos-meta   { top: 40%; right: 25%; }
+  .pos-stripe { top: 65%; right: 15%; }
+
+  /* Brand Logos Footer (The white curved area) */
+  .brand-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns like image 3 */
+    gap: 20px;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 40px 40px 0 0; /* Curved top */
+    width: 100%;
   }
 }
